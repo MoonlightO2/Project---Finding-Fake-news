@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fake News Detection System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Random News</h1>
+	<form action="{{ url_for('random_news')}}" method="POST">
+    <button style="width:20%" onclick="random_news()" class="btn btn-primary">Load random row</button><br>
+	</form>
+
+    <table>
+        {% for column_name, column_value in row.items() %}
+        <tr>
+            <td>{{ column_name }}</td>
+            <td>{{ column_value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+		<br><br>
+
+	<form action="{{ url_for('process_form') }}" method="POST">
+		<label for="maintext"><b>News</b></label><br>
+		<textarea name="message" rows="7" cols="180" required="required" style="font-size: 10pt"></textarea>
+		<br><br>
+		<button style="width:20%" type="submit" class="btn btn-primary">Predict News</button><br><br>
+	</form>
+
+	<div class="results">
+		{% if prediction == ['FAKE']%}
+			<h2 style="color:red;">This news is a SPAM / FAKE News</h2>
+		{% elif prediction == ['REAL']%}
+			<h2 style="color:green;">This news is a REAL News</h2>
+		{% endif %}
+	</div>
+
+	<form action="{{ url_for('home')}}" method="POST">
+	<button style="width:20%" onclick="home()" class="btn btn-primary">Home</button>
+	</form>
+    
+</body>
+</html>

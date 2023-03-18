@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fake News Detection System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h1>Fake News Detector</h1>
+<h2>Predict News - Accuracy Score</h2><br>
+<body>
+    <h3 style="color:blue;">Accuracy Score of the news in the file is: {{ accuracy }}</h3>
+	<div>
+	{% if accuracy*100 >= 75%}
+		<h2 style="color:green;">This is Reliable News above 75%</h2><br>
+	{% elif accuracy*100 >= 50%}
+		<h2 style="color:orange;">This is Reliable News above 50%</h2><br>
+	{% elif accuracy*100 <= 50%}
+		<h2 style="color:red;">This is Not a Reliable News, below 50%</h2><br>	
+	{% endif %}
+	</div>
+	<form action="{{ url_for('upload_file')}}" method="POST">
+	<button style="width:20%" onclick="upload_file()" class="btn btn-primary">Upload another CSV</button>
+	</form><br>
+	<form action="{{ url_for('home')}}" method="POST">
+	<button style="width:20%" onclick="home()" class="btn btn-primary">Home</button>
+	</form>
+
+</body>
+</html>

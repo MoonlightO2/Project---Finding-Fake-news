@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Modal Example</title>
+</head>
+<body>
+    <button onclick="document.getElementById('modal').style.display='block'">Open Modal</button>
+
+    <div id="modal" style="display:none" class="modal">
+        <div class="modal-content">
+            <span onclick="document.getElementById('modal').style.display='none'" class="close">&times;</span>
+            <p>{{ message }}</p>
+        </div>
+    </div>
+
+</body>
+</html>

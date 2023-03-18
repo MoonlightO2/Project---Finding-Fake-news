@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Progress Bar</title>
+  <script>
+    function reloadPage() {
+      // measure the time taken to reload the page
+      var startTime = new Date().getTime();
+      location.reload();
+      var endTime = new Date().getTime();
+      var timeTaken = endTime - startTime;
+
+      // update the progress bar
+      var progressBar = document.getElementById("progressBar");
+      progressBar.value = 100;
+      progressBar.style.transitionDuration = timeTaken + "ms";
+      progressBar.style.width = "0%";
+    }
+  </script>
+</head>
+<body>
+  <button onclick="reloadPage()">Reload</button>
+  <br><br>
+  <progress id="progressBar" value="0" max="100"></progress>
+</body>
+</html>

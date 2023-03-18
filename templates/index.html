@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Fake News Detection System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+	<h1>Fake News Detector</h1>
+	<h4>Click one of the buttons below to predict fake or real news and check accuracy of news in a CSV file</h4>
+	<div class="btn-group" style="width:100%">
+		<form action="{{ url_for('random_news')}}" method="POST">
+		<button style="width:30%" onclick="random_news()" class="btn btn-primary">Load random row and predict news</button>
+		</form><br>
+		
+		<form action="{{ url_for('predict')}}" method="POST">
+		<button style="width:30%" onclick="predict" name="predict" class="btn btn-primary">Enter news manually and predict news</button>
+		</form><br>
+
+		<form action="{{ url_for('upload_file')}}" method="POST">
+		<button style="width:30%" onclick="predict" class="btn btn-primary">Upload News file and find accuracy of news</button>
+		</form><br>
+	</div>
+  </body>
+</html>
