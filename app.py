@@ -12,11 +12,12 @@ import csv
 import random
 
 # Code reference: https://github.com/Spidy20/Fake_News_Detection/blob/master/Fake_News_Det.py
+# Code below is similar to the code in the reference
 
 # Initialize Flask application
 app = Flask(__name__)
 
-# Creates an instance of the TfidfVectorizer class from scikit-learn
+# Creates an instance of the TfidfVectorizer
 tfvect = TfidfVectorizer(stop_words='english', max_df=0.7)
 
 # Loads a pre-trained machine learning model
@@ -31,13 +32,14 @@ x = dataframe['text']
 # Extracts the "label" column of the CSV file from the Pandas dataframe and assigns it to the variable y
 y = dataframe['label']
 
-# Splits the data into training and testing sets using the train_test_split function from scikit-learn
+# Splits the data into training and testing sets using the train_test_split function
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
 
 
 # Code reference: https://github.com/Spidy20/Fake_News_Detection/blob/master/Fake_News_Det.py
+# Code below is similar to the code in the reference
 
-# Takes in a news article and predicts whether it's fake or not
+# Function that takes in a news article and predicts whether it's fake or not
 def fake_news_det(news):
 
     # Convert the input news article to a Pandas Series and fill any missing values with an empty string
@@ -66,7 +68,20 @@ def fake_news_det(news):
 def home():
     return render_template('index.html')
 
+
 # Code reference: https://github.com/Spidy20/Fake_News_Detection/blob/master/Fake_News_Det.py
+"""
+Code referred:
+@app.route('/predict', methods=['POST'])
+def predict():
+    if request.method == 'POST':
+        message = request.form['message']
+        pred = fake_news_det(message)
+        print(pred)
+        return render_template('index.html', prediction=pred)
+    else:
+        return render_template('index.html', prediction="Something went wrong")
+"""
 
 # This route handles GET and POST requests to '/predict'
 @app.route('/predict', methods=['GET', 'POST'])
